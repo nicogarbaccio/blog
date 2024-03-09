@@ -8,6 +8,7 @@ import {
   signInFailure,
 } from '../redux/user/userSlice';
 import OAuth from '../components/OAuth';
+import toast from 'react-hot-toast';
 
 export default function SignIn() {
   const [formData, setFormData] = useState({});
@@ -37,6 +38,7 @@ export default function SignIn() {
       if (res.ok) {
         dispatch(signInSuccess(data));
         navigate('/');
+        toast.success('Successfully signed in!')
       }
     } catch (error) {
       dispatch(signInFailure(error.message));

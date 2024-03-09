@@ -7,6 +7,7 @@ import { toggleTheme } from '../redux/theme/themeSlice';
 import { signoutSuccess } from '../redux/user/userSlice';
 import { useEffect, useState } from 'react';
 import Logo from './Logo';
+import toast from 'react-hot-toast';
 
 export default function Header() {
   const path = useLocation().pathname;
@@ -35,6 +36,7 @@ export default function Header() {
         console.log(data.message);
       } else {
         dispatch(signoutSuccess());
+        toast.success('Successfully signed out!')
       }
     } catch (error) {
       console.log(error.message);
