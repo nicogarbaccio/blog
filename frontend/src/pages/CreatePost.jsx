@@ -98,16 +98,6 @@ export default function CreatePost() {
               setFormData({ ...formData, title: e.target.value })
             }
           />
-          <TextInput
-            type='text'
-            placeholder='Description'
-            required
-            id='description'
-            className='flex-1'
-            onChange={(e) =>
-              setFormData({ ...formData, description: e.target.value })
-            }
-          />
           <Select
             onChange={(e) =>
               setFormData({ ...formData, category: e.target.value })

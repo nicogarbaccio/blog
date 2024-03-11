@@ -40,7 +40,6 @@ export default function Home() {
         </Link>
       </div>
       <div className='p-3 bg-amber-100 dark:bg-slate-700'>
-        {/* Most Recent Post */}
         {mostRecentPost() &&
           <MostRecent post={mostRecentPost()} />
         }

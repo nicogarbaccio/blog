@@ -1,4 +1,6 @@
-import { Alert, Button, Modal, TextInput, Textarea } from 'flowbite-react';
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
+import { Alert, Button, Modal, Textarea } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -204,7 +206,7 @@ export default function CommentSection({ postId }) {
                 color='failure'
                 onClick={() => handleDelete(commentToDelete)}
               >
-                Yes, I'm sure
+                Yes, I&apos;m sure
               </Button>
               <Button color='gray' onClick={() => setShowModal(false)}>
                 No, cancel

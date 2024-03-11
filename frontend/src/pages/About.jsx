@@ -6,7 +6,7 @@ export default function About() {
       <div className='max-w-2xl mx-auto p-3 text-center'>
         <div>
           <h1 className='text-4xl font font-semibold text-center'>
-            About the Author
+            About Nico
           </h1>
           <div className='text-md text-gray-500 flex flex-col gap-2'>
           <div className="flex items-center justify-center p-4">
@@ -17,6 +17,9 @@ export default function About() {
             </p>
           </div>
         </div>
+          {/* <h2 className='text-3xl font font-semibold text-center mt-5'>
+            Get in touch!
+          </h2> */}
       </div>
     </div>
   );
