@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Alert, Button, FileInput, Select, TextInput } from 'flowbite-react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -95,6 +96,16 @@ export default function CreatePost() {
             className='flex-1'
             onChange={(e) =>
               setFormData({ ...formData, title: e.target.value })
+            }
+          />
+          <TextInput
+            type='text'
+            placeholder='Description'
+            required
+            id='description'
+            className='flex-1'
+            onChange={(e) =>
+              setFormData({ ...formData, description: e.target.value })
             }
           />
           <Select

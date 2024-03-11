@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-// import CallToAction from '../components/CallToAction';
 import { useEffect, useState } from 'react';
 import PostCard from '../components/PostCard';
+import MostRecent from '../components/MostRecent';
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
@@ -14,9 +14,19 @@ export default function Home() {
     };
     fetchPosts();
   }, []);
+
+  const mostRecentPost = () => {
+    return posts.length > 0 ? posts[0] : null;
+  };
+
   return (
     <div>
-      <div className='flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto '>
+      {/* Display the most recent post */}
+      {/* {mostRecentPost() && (
+        <MostRecent post={mostRecentPost()} />
+      )} */}
+
+      <div className='flex flex-col gap-6 p-10 px-3 max-w-6xl mx-auto '>
         <h1 className='text-3xl font-bold lg:text-6xl'>Hey there!</h1>
         <p className='text-gray-500 text-xs sm:text-sm'>
           Here you will find a variety of articles and tutorials on topics such as
@@ -29,14 +39,17 @@ export default function Home() {
           View all posts
         </Link>
       </div>
-      {/* <div className='p-3 bg-amber-100 dark:bg-slate-700'>
-        <CallToAction />
-      </div> */}
+      <div className='p-3 bg-amber-100 dark:bg-slate-700'>
+        {/* Most Recent Post */}
+        {mostRecentPost() &&
+          <MostRecent post={mostRecentPost()} />
+        }
+      </div>
       <div className='max-w-6xl mx-auto p-3 flex flex-col gap-8 py-7'>
         {posts && posts.length > 0 && (
           <div className='flex flex-col gap-6'>
             <h2 className='text-2xl font-semibold text-center'>Recent Posts</h2>
-            <div className='flex flex-wrap gap-4'>
+            <div className='flex flex-wrap gap-4 items-center justify-center'>
               {posts.map((post) => (
                 <PostCard key={post._id} post={post} />
               ))}
