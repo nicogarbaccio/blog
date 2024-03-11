@@ -50,6 +50,7 @@ export default function DashSidebar() {
                 active={tab === "dash" || !tab}
                 icon={HiChartPie}
                 as="div"
+                data-testid="sidebar-dashboard"
               >
                 Dashboard
               </Sidebar.Item>
@@ -62,6 +63,7 @@ export default function DashSidebar() {
               label={currentUser.isAdmin ? "Admin" : "User"}
               labelColor="dark"
               as="div"
+              data-testid="sidebar-profile"
             >
               Profile
             </Sidebar.Item>
@@ -72,6 +74,7 @@ export default function DashSidebar() {
                 active={tab === "posts"}
                 icon={HiDocumentText}
                 as="div"
+                data-testid="sidebar-posts"
               >
                 Posts
               </Sidebar.Item>
@@ -84,6 +87,7 @@ export default function DashSidebar() {
                   active={tab === "users"}
                   icon={HiOutlineUserGroup}
                   as="div"
+                  data-testid="sidebar-users"
                 >
                   Users
                 </Sidebar.Item>
@@ -93,6 +97,7 @@ export default function DashSidebar() {
                   active={tab === "comments"}
                   icon={HiAnnotation}
                   as="div"
+                  data-testid="sidebar-comments"
                 >
                   Comments
                 </Sidebar.Item>
@@ -103,6 +108,7 @@ export default function DashSidebar() {
             icon={HiArrowSmRight}
             className="cursor-pointer"
             onClick={handleSignout}
+            data-testid="sidebar-signout"
           >
             Sign Out
           </Sidebar.Item>

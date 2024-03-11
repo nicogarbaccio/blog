@@ -125,6 +125,7 @@ export default function CommentSection({ postId }) {
           <Link
             to={"/dashboard?tab=profile"}
             className="text-xs text-cyan-600 hover:underline"
+            data-testid="comment-username"
           >
             @{currentUser.username}
           </Link>
@@ -132,7 +133,11 @@ export default function CommentSection({ postId }) {
       ) : (
         <div className="text-sm text-teal-500 my-5 flex gap-1">
           You must be signed in to comment.
-          <Link className="text-blue-500 hover:underline" to={"/sign-in"}>
+          <Link
+            className="text-blue-500 hover:underline"
+            to={"/sign-in"}
+            data-testid="comment-sign-in"
+          >
             Sign In
           </Link>
         </div>
@@ -150,15 +155,23 @@ export default function CommentSection({ postId }) {
             value={comment}
           />
           <div className="flex justify-between items-center mt-5">
-            <p className="text-gray-500 text-xs">
+            <p
+              className="text-gray-500 text-xs"
+              data-testid="comment-characters-remaining"
+            >
               {200 - comment.length} characters remaining
             </p>
-            <Button outline gradientDuoTone="purpleToBlue" type="submit">
+            <Button
+              outline
+              gradientDuoTone="greenToBlue"
+              type="submit"
+              data-testid="comment-submit"
+            >
               Submit
             </Button>
           </div>
           {commentError && (
-            <Alert color="failure" className="mt-5">
+            <Alert color="failure" className="mt-5" data-testid="comment-error">
               {commentError}
             </Alert>
           )}
@@ -205,10 +218,15 @@ export default function CommentSection({ postId }) {
               <Button
                 color="failure"
                 onClick={() => handleDelete(commentToDelete)}
+                data-testid="comment-delete-yes"
               >
                 Yes, I&apos;m sure
               </Button>
-              <Button color="gray" onClick={() => setShowModal(false)}>
+              <Button
+                color="gray"
+                onClick={() => setShowModal(false)}
+                data-testid="comment-delete-no"
+              >
                 No, cancel
               </Button>
             </div>

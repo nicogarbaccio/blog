@@ -67,12 +67,14 @@ export default function Header() {
           className="hidden lg:inline"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
+          data-testid="header-search-input"
         />
       </form>
       <Button
         className="rounded-lg lg:hidden"
         color="gray"
         onClick={handleSubmit}
+        data-testid="header-search-button"
       >
         <AiOutlineSearch />
       </Button>
@@ -82,6 +84,7 @@ export default function Header() {
           color="gray"
           pill
           onClick={() => dispatch(toggleTheme())}
+          data-testid="light-dark-toggle-button"
         >
           {theme === "light" ? <FaSun /> : <FaMoon />}
         </Button>
@@ -90,20 +93,34 @@ export default function Header() {
             arrowIcon={false}
             inline
             label={
-              <Avatar alt="user" img={currentUser.profilePicture} rounded />
+              <Avatar
+                alt="user"
+                img={currentUser.profilePicture}
+                rounded
+                data-testid="header-avatar"
+              />
             }
           >
             <Dropdown.Header>
-              <span className="block text-sm">@{currentUser.username}</span>
-              <span className="block text-sm font-medium truncate">
+              <span className="block text-sm" data-testid="header-username">
+                @{currentUser.username}
+              </span>
+              <span
+                className="block text-sm font-medium truncate"
+                data-testid="header-user-email"
+              >
                 {currentUser.email}
               </span>
             </Dropdown.Header>
             <Link to={"/dashboard?tab=profile"}>
-              <Dropdown.Item>Profile</Dropdown.Item>
+              <Dropdown.Item data-testid="header-profile">
+                Profile
+              </Dropdown.Item>
             </Link>
             <Dropdown.Divider />
-            <Dropdown.Item onClick={handleSignout}>Sign out</Dropdown.Item>
+            <Dropdown.Item onClick={handleSignout} data-testid="header-signout">
+              Sign out
+            </Dropdown.Item>
           </Dropdown>
         ) : (
           <Link to="/sign-in">

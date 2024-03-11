@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Button, Select, TextInput } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -114,11 +115,17 @@ export default function Search() {
               type="text"
               value={sidebarData.searchTerm}
               onChange={handleChange}
+              data-testid="sidebar-search-input"
             />
           </div>
           <div className="flex items-center gap-2">
             <label className="font-semibold">Sort:</label>
-            <Select onChange={handleChange} value={sidebarData.sort} id="sort">
+            <Select
+              onChange={handleChange}
+              value={sidebarData.sort}
+              id="sort"
+              data-testid="latest-oldest-dropdown"
+            >
               <option value="desc">Latest</option>
               <option value="asc">Oldest</option>
             </Select>
@@ -129,6 +136,7 @@ export default function Search() {
               onChange={handleChange}
               value={sidebarData.category}
               id="category"
+              data-testid="category-dropdown"
             >
               <option value="uncategorized">Uncategorized</option>
               <option value="reactjs">Cypress</option>
@@ -137,7 +145,12 @@ export default function Search() {
               <option value="javascript">JavaScript</option>
             </Select>
           </div>
-          <Button type="submit" outline gradientDuoTone="greenToBlue">
+          <Button
+            type="submit"
+            outline
+            gradientDuoTone="greenToBlue"
+            data-testid="apply-filters-button"
+          >
             Apply Filters
           </Button>
         </form>

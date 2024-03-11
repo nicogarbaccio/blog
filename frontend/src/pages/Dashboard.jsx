@@ -24,15 +24,15 @@ export default function Dashboard() {
         <DashSidebar />
       </div>
       {/* profile... */}
-      {tab === "profile" && <DashProfile data-testid="profile" />}
+      {tab === "profile" && <DashProfile />}
       {/* posts... */}
-      {tab === "posts" && <DashPosts data-testid="posts" />}
+      {tab === "posts" && <DashPosts />}
       {/* users */}
-      {tab === "users" && <DashUsers data-testid="users" />}
+      {tab === "users" && <DashUsers />}
       {/* comments  */}
-      {tab === "comments" && <DashComments data-testid="comments" />}
+      {tab === "comments" && <DashComments />}
       {/* dashboard comp */}
-      {tab === "dash" && <DashboardComp data-testid="sign-out" />}
+      {tab === "dash" && <DashboardComp />}
     </div>
   );
 }
