@@ -1,13 +1,13 @@
-import { Avatar, Button, Dropdown, Navbar, TextInput } from 'flowbite-react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { AiOutlineSearch } from 'react-icons/ai';
-import { FaMoon, FaSun } from 'react-icons/fa';
-import { useSelector, useDispatch } from 'react-redux';
-import { toggleTheme } from '../redux/theme/themeSlice';
-import { signoutSuccess } from '../redux/user/userSlice';
-import { useEffect, useState } from 'react';
-import Logo from './Logo';
-import toast from 'react-hot-toast';
+import { Avatar, Button, Dropdown, Navbar, TextInput } from "flowbite-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AiOutlineSearch } from "react-icons/ai";
+import { FaMoon, FaSun } from "react-icons/fa";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleTheme } from "../redux/theme/themeSlice";
+import { signoutSuccess } from "../redux/user/userSlice";
+import { useEffect, useState } from "react";
+import Logo from "./Logo";
+import toast from "react-hot-toast";
 
 export default function Header() {
   const path = useLocation().pathname;
@@ -16,11 +16,11 @@ export default function Header() {
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
   const { theme } = useSelector((state) => state.theme);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
-    const searchTermFromUrl = urlParams.get('searchTerm');
+    const searchTermFromUrl = urlParams.get("searchTerm");
     if (searchTermFromUrl) {
       setSearchTerm(searchTermFromUrl);
     }
@@ -28,15 +28,15 @@ export default function Header() {
 
   const handleSignout = async () => {
     try {
-      const res = await fetch('/api/user/signout', {
-        method: 'POST',
+      const res = await fetch("/api/user/signout", {
+        method: "POST",
       });
       const data = await res.json();
       if (!res.ok) {
         console.log(data.message);
       } else {
         dispatch(signoutSuccess());
-        toast.success('Successfully signed out!')
+        toast.success("Successfully signed out!");
       }
     } catch (error) {
       console.log(error.message);
@@ -46,7 +46,7 @@ export default function Header() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const urlParams = new URLSearchParams(location.search);
-    urlParams.set('searchTerm', searchTerm);
+    urlParams.set("searchTerm", searchTerm);
     const searchQuery = urlParams.toString();
     navigate(`/search?${searchQuery}`);
   };
@@ -59,7 +59,7 @@ export default function Header() {
       >
         <Logo />
       </Link>
-      <form className='flex' onSubmit={handleSubmit}>
+      <form className="flex" onSubmit={handleSubmit}>
         <TextInput
           type="text"
           placeholder="Search..."
@@ -69,7 +69,11 @@ export default function Header() {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </form>
-      <Button className="rounded-lg lg:hidden" color="gray" onClick={handleSubmit}>
+      <Button
+        className="rounded-lg lg:hidden"
+        color="gray"
+        onClick={handleSubmit}
+      >
         <AiOutlineSearch />
       </Button>
       <div className="flex gap-2 md:order-2">
@@ -120,5 +124,4 @@ export default function Header() {
       </Navbar.Collapse>
     </Navbar>
   );
-
 }

@@ -1,18 +1,18 @@
 /* eslint-disable no-unused-vars */
-import { Alert, Button, FileInput, Select, TextInput } from 'flowbite-react';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import { Alert, Button, FileInput, Select, TextInput } from "flowbite-react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 import {
   getDownloadURL,
   getStorage,
   ref,
   uploadBytesResumable,
-} from 'firebase/storage';
-import { app } from '../firebase';
-import { useState } from 'react';
-import { CircularProgressbar } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
-import { useNavigate } from 'react-router-dom';
+} from "firebase/storage";
+import { app } from "../firebase";
+import { useState } from "react";
+import { CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
+import { useNavigate } from "react-router-dom";
 
 export default function CreatePost() {
   const [file, setFile] = useState(null);
@@ -26,23 +26,23 @@ export default function CreatePost() {
   const handleUpdloadImage = async () => {
     try {
       if (!file) {
-        setImageUploadError('Please select an image');
+        setImageUploadError("Please select an image");
         return;
       }
       setImageUploadError(null);
       const storage = getStorage(app);
-      const fileName = new Date().getTime() + '-' + file.name;
+      const fileName = new Date().getTime() + "-" + file.name;
       const storageRef = ref(storage, fileName);
       const uploadTask = uploadBytesResumable(storageRef, file);
       uploadTask.on(
-        'state_changed',
+        "state_changed",
         (snapshot) => {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           setImageUploadProgress(progress.toFixed(0));
         },
         (error) => {
-          setImageUploadError('Image upload failed');
+          setImageUploadError("Image upload failed");
           setImageUploadProgress(null);
         },
         () => {
@@ -54,7 +54,7 @@ export default function CreatePost() {
         }
       );
     } catch (error) {
-      setImageUploadError('Image upload failed');
+      setImageUploadError("Image upload failed");
       setImageUploadProgress(null);
       console.log(error);
     }
@@ -62,10 +62,10 @@ export default function CreatePost() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('/api/post/create', {
-        method: 'POST',
+      const res = await fetch("/api/post/create", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
@@ -80,20 +80,21 @@ export default function CreatePost() {
         navigate(`/post/${data.slug}`);
       }
     } catch (error) {
-      setPublishError('Something went wrong');
+      setPublishError("Something went wrong");
     }
   };
   return (
-    <div className='p-3 max-w-3xl mx-auto min-h-screen'>
-      <h1 className='text-center text-3xl my-7 font-semibold'>Create a post</h1>
-      <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
-        <div className='flex flex-col gap-4 sm:flex-row justify-between'>
+    <div className="p-3 max-w-3xl mx-auto min-h-screen">
+      <h1 className="text-center text-3xl my-7 font-semibold">Create a post</h1>
+      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+        <div className="flex flex-col gap-4 sm:flex-row justify-between">
           <TextInput
-            type='text'
-            placeholder='Title'
+            type="text"
+            placeholder="Title"
             required
-            id='title'
-            className='flex-1'
+            id="title"
+            data-testid="title-input"
+            className="flex-1"
             onChange={(e) =>
               setFormData({ ...formData, title: e.target.value })
             }
@@ -102,71 +103,85 @@ export default function CreatePost() {
             onChange={(e) =>
               setFormData({ ...formData, category: e.target.value })
             }
+            data-testid="category-input"
           >
-              <option value='uncategorized'>Uncategorized</option>
-              <option value='reactjs'>Cypress</option>
-              <option value='playwright'>Playwright</option>
-              <option value='nextjs'>Manual QA</option>
-              <option value='javascript'>JavaScript</option>
+            <option value="uncategorized">Uncategorized</option>
+            <option value="reactjs">Cypress</option>
+            <option value="playwright">Playwright</option>
+            <option value="nextjs">Manual QA</option>
+            <option value="javascript">JavaScript</option>
           </Select>
         </div>
-        <div className='flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3'>
+        <div className="flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3">
           <FileInput
-            type='file'
-            accept='image/*'
+            type="file"
+            accept="image/*"
             onChange={(e) => setFile(e.target.files[0])}
+            data-testid="image-input"
           />
           <Button
-            type='button'
-            gradientDuoTone='purpleToBlue'
-            size='sm'
+            type="button"
+            gradientDuoTone="purpleToBlue"
+            size="sm"
             outline
             onClick={handleUpdloadImage}
             disabled={imageUploadProgress}
+            data-testid="image-upload-button"
           >
             {imageUploadProgress ? (
-              <div className='w-16 h-16'>
+              <div className="w-16 h-16">
                 <CircularProgressbar
                   value={imageUploadProgress}
                   text={`${imageUploadProgress || 0}%`}
                 />
               </div>
             ) : (
-              'Upload Image'
+              "Upload Image"
             )}
           </Button>
         </div>
-        {imageUploadError && <Alert color='failure'>{imageUploadError}</Alert>}
+        {imageUploadError && (
+          <Alert color="failure" data-testid="image-upload-error">
+            {imageUploadError}
+          </Alert>
+        )}
         {formData.image && (
           <img
             src={formData.image}
-            alt='upload'
-            className='w-full h-72 object-cover'
+            alt="upload"
+            className="w-full h-72 object-cover"
           />
         )}
         <ReactQuill
-          theme='snow'
-          placeholder='Write something...'
-          className='h-72 mb-12'
+          theme="snow"
+          placeholder="Write something..."
+          className="h-72 mb-12"
           required
           onChange={(value) => {
             setFormData({ ...formData, content: value });
           }}
           modules={{
             toolbar: [
-                [{ header: [1, 2, 3, 4, 5, 6, false] }],
-                [{ size: ['small', false, 'large', 'huge'] }],
-                [{ list: 'ordered' }, { list: 'bullet' }],
-                ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-                ['code-block'],['link'],['image']
+              [{ header: [1, 2, 3, 4, 5, 6, false] }],
+              [{ size: ["small", false, "large", "huge"] }],
+              [{ list: "ordered" }, { list: "bullet" }],
+              ["bold", "italic", "underline", "strike", "blockquote"],
+              ["code-block"],
+              ["link"],
+              ["image"],
             ],
           }}
+          data-testid="text-editor"
         />
-        <Button type='submit' gradientDuoTone='greenToBlue'>
+        <Button
+          type="submit"
+          gradientDuoTone="greenToBlue"
+          data-testid="publish-button"
+        >
           Publish
         </Button>
         {publishError && (
-          <Alert className='mt-5' color='failure'>
+          <Alert className="mt-5" color="failure" data-testid="publish-error">
             {publishError}
           </Alert>
         )}
