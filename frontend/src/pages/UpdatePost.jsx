@@ -126,12 +126,14 @@ export default function UpdatePost() {
               setFormData({ ...formData, title: e.target.value })
             }
             value={formData.title}
+            data-testid="title-input"
           />
           <Select
             onChange={(e) =>
               setFormData({ ...formData, category: e.target.value })
             }
             value={formData.category}
+            data-testid="category-input"
           >
             <option value="uncategorized">Select a category</option>
             <option value="javascript">JavaScript</option>
@@ -144,14 +146,16 @@ export default function UpdatePost() {
             type="file"
             accept="image/*"
             onChange={(e) => setFile(e.target.files[0])}
+            data-testid="image-input"
           />
           <Button
             type="button"
-            gradientDuoTone="purpleToBlue"
+            gradientDuoTone="greenToBlue"
             size="sm"
             outline
             onClick={handleUpdloadImage}
             disabled={imageUploadProgress}
+            data-testid="image-upload-button"
           >
             {imageUploadProgress ? (
               <div className="w-16 h-16">
@@ -182,8 +186,13 @@ export default function UpdatePost() {
           onChange={(value) => {
             setFormData({ ...formData, content: value });
           }}
+          data-testid="text-editor"
         />
-        <Button type="submit" gradientDuoTone="purpleToPink">
+        <Button
+          type="submit"
+          gradientDuoTone="greenToBlue"
+          data-testid="publish-button"
+        >
           Update post
         </Button>
         {publishError && (

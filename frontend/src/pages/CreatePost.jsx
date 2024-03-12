@@ -13,6 +13,7 @@ import { useState } from "react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function CreatePost() {
   const [file, setFile] = useState(null);
@@ -78,6 +79,7 @@ export default function CreatePost() {
       if (res.ok) {
         setPublishError(null);
         navigate(`/post/${data.slug}`);
+        toast.success("Post successfully created!");
       }
     } catch (error) {
       setPublishError("Something went wrong");
