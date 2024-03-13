@@ -1,4 +1,4 @@
-import { Avatar, Button, Dropdown, Navbar, TextInput } from "flowbite-react";
+import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaMoon, FaSun } from "react-icons/fa";
@@ -60,24 +60,27 @@ export default function Header() {
         <Logo />
       </Link>
       <form className="flex" onSubmit={handleSubmit}>
-        <TextInput
-          type="text"
-          placeholder="Search..."
-          rightIcon={AiOutlineSearch}
-          className="hidden lg:inline"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          data-testid="header-search-input"
-        />
+        <div className="flex items-center border border-black dark:border-teal-500 rounded-full px-4 py-2">
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search..."
+            className="flex-1 bg-transparent outline-none mr-2 border-none hidden lg:inline focus:ring-0"
+            data-testid="header-search-input"
+          />
+          <button
+            className=""
+            onClick={handleSubmit}
+            data-testid="header-search-button"
+          >
+            <AiOutlineSearch
+              className="text-gray-600 hover:text-teal-500 dark:text-teal-500 dark:hover:text-white cursor-pointer"
+              size={24}
+            />
+          </button>
+        </div>
       </form>
-      <Button
-        className="rounded-lg lg:hidden"
-        color="gray"
-        onClick={handleSubmit}
-        data-testid="header-search-button"
-      >
-        <AiOutlineSearch />
-      </Button>
       <div className="flex gap-2 md:order-2">
         <Button
           className="w-12 h-10 hidden sm:inline"

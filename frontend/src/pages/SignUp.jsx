@@ -30,7 +30,12 @@ export default function SignUp() {
       });
       const data = await res.json();
       if (data.success === false) {
-        return setErrorMessage(data.message);
+        if (data.message && data.message.includes("duplicate key")) {
+          setErrorMessage("An account with that email already exists!");
+        } else {
+          setLoading(false);
+          return setErrorMessage(data.message);
+        }
       }
       setLoading(false);
       if (res.ok) {
@@ -48,7 +53,7 @@ export default function SignUp() {
         {/* left */}
         <div className="flex-1">
           <Link to="/" className="font-bold dark:text-white text-4xl">
-            Sign In
+            Sign Up
           </Link>
           <p className="text-md mt-5">
             In order to leave and like comments, create an account or sign in
