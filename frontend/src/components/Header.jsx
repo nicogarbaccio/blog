@@ -127,7 +127,11 @@ export default function Header() {
           </Dropdown>
         ) : (
           <Link to="/sign-in">
-            <Button gradientDuoTone="greenToBlue" outline>
+            <Button
+              gradientDuoTone="greenToBlue"
+              outline
+              data-testid="header-signin"
+            >
               Sign In
             </Button>
           </Link>
