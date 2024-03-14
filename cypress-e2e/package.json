@@ -1,0 +1,31 @@
+{
+  "name": "cypress-e2e",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "cypress:open": "cypress open"
+  },
+  "dependencies": {
+    "cypress-commands": "^3.0.0",
+    "cypress-plugin-steps": "^1.1.1",
+    "cypress-real-events": "^1.11.0"
+  },
+  "devDependencies": {
+    "@cypress/webpack-preprocessor": "^5.17.1",
+    "@testing-library/cypress": "^10.0.1",
+    "cypress": "13.7.0",
+    "cypress-fill-command": "^1.0.2",
+    "cypress-if": "^1.10.5",
+    "cypress-mailosaur": "^2.14.0",
+    "eslint": "8.26.0",
+    "eslint-plugin-cypress": "2.15.1",
+    "eslint-plugin-eslint-comments": "3.2.0",
+    "eslint-plugin-github": "4.9.2",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1"
+  }
+}

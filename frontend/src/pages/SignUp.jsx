@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import OAuth from "../components/OAuth";
 import { useDispatch } from "react-redux";
 import { signInSuccess } from "../redux/user/userSlice";
+import toast from "react-hot-toast";
 
 export default function SignUp() {
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ export default function SignUp() {
       if (res.ok) {
         dispatch(signInSuccess(formData));
         navigate("/");
+        toast.success("Account succesfully created!");
       }
     } catch (error) {
       setErrorMessage(error.message);
