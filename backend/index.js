@@ -12,10 +12,11 @@ import path from "path";
 mongoose
   .connect(process.env.MONGODB_CONNECTION_STRING)
   .then(() => {
-    console.log(
-      "Connected to database: ",
-      process.env.MONGODB_CONNECTION_STRING
-    );
+    if (process.env.MONGODB_CONNECTION_STRING.includes("test")) {
+      console.log("Connected to test db!");
+    } else {
+      console.log("Connected to production db!");
+    }
   })
   .catch((err) => {
     console.log(err);
