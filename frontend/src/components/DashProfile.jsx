@@ -249,6 +249,7 @@ export default function DashProfile() {
               type="button"
               gradientDuoTone="greenToBlue"
               className="w-full"
+              data-testid="create-post-button"
             >
               Create a post
             </Button>
