@@ -39,3 +39,21 @@ body {
 .dark .post-content a {
   color: red;
 }
+
+/* Style for code blocks */
+pre {
+  background-color: #282c34; /* Darker background color */
+  color: #fff; 
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 0.25rem; /* Add rounded corners */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+/* Style for inline code */
+code {
+  background-color: #282c34; /* Same background color as code blocks */
+  color: #abb2bf; /* Same text color as code blocks */
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+}

@@ -135,10 +135,13 @@ export default function UpdatePost() {
             value={formData.category}
             data-testid="category-input"
           >
-            <option value="uncategorized">Select a category</option>
+            <option value="uncategorized">Uncategorized</option>
+            <option value="cypress">Cypress</option>
+            <option value="playwright">Playwright</option>
+            <option value="Manual QA">Manual QA</option>
             <option value="javascript">JavaScript</option>
-            <option value="reactjs">React.js</option>
-            <option value="nextjs">Next.js</option>
+            <option value="typescript">TypeScript</option>
+            <option value="miscellaneous">Miscellaneous</option>
           </Select>
         </div>
         <div className="flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3">
@@ -185,6 +188,17 @@ export default function UpdatePost() {
           required
           onChange={(value) => {
             setFormData({ ...formData, content: value });
+          }}
+          modules={{
+            toolbar: [
+              [{ header: [1, 2, 3, 4, 5, 6, false] }],
+              [{ size: ["small", false, "large", "huge"] }],
+              [{ list: "ordered" }, { list: "bullet" }],
+              ["bold", "italic", "underline", "strike", "blockquote"],
+              ["code-block"],
+              ["link"],
+              ["image"],
+            ],
           }}
           data-testid="text-editor"
         />

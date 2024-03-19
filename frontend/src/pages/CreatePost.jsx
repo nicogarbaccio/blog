@@ -108,10 +108,12 @@ export default function CreatePost() {
             data-testid="category-input"
           >
             <option value="uncategorized">Uncategorized</option>
-            <option value="reactjs">Cypress</option>
+            <option value="cypress">Cypress</option>
             <option value="playwright">Playwright</option>
-            <option value="nextjs">Manual QA</option>
+            <option value="Manual QA">Manual QA</option>
             <option value="javascript">JavaScript</option>
+            <option value="typescript">TypeScript</option>
+            <option value="miscellaneous">Miscellaneous</option>
           </Select>
         </div>
         <div className="flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3">
