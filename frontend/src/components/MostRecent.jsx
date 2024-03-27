@@ -26,8 +26,8 @@ export default function MostRecent({ post }) {
           </Button>
         </Link>
       </div>
-      <div className="p-7 flex-1 flex">
-        <img className="rounded-md" src={post.image} />
+      <div className="p-7 flex-1 flex justify-center items-center">
+        <img className="rounded-md object-cover" src={post.image} />
       </div>
     </div>
   );
