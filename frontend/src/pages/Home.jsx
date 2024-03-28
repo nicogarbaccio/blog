@@ -23,9 +23,19 @@ export default function Home() {
     <div>
       <div className="flex flex-col gap-6 p-10 px-3 max-w-6xl mx-auto ">
         <h1 className="text-3xl font-bold lg:text-6xl">Hey there!</h1>
-        <p className="text-gray-500 text-xs sm:text-sm">
-          Here you will find a variety of articles and tutorials on topics such
-          as web development, software engineering, and programming languages.
+        <p className="text-black dark:text-white md:text-md sm:text-sm">
+          Welcome to my cozy corner of the internet where we'll dive into the
+          exciting world of QA engineering! If you're ready to level up your
+          testing game (or at least see cute cat pictures) you've come to the
+          right place. We'll explore the ins and outs of manual testing, share
+          tips and tricks, and even get our hands dirty with some automation.
+          But don't worry, this isn't your typical boring blog. We'll keep
+          things fun, fresh, and easy to understand. Whether you're a seasoned
+          QA pro or just starting out, there's something here for everyone. So
+          grab a cup of coffee (or your beverage of choice), settle in, and
+          let's write some tests together. Along the way, we'll learn, grow, and
+          maybe even have a few laughs. Get ready to sharpen your skills and
+          become the QA engineer you always knew you could be!
         </p>
         <Link
           to="/search"

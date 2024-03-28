@@ -57,6 +57,7 @@ export default function PostPage() {
         <Spinner size="xl" />
       </div>
     );
+
   return (
     <main className="p-3 flex flex-col max-w-6xl mx-auto min-h-screen">
       <h1
