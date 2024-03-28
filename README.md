@@ -1,6 +1,4 @@
-<!-- Replace this with screenshot of blog 
-<img width="1320" alt="Screenshot" src="https://github.com/nicogarbaccio/hotel-booking-app/assets/36672915/0647054f-625e-47fc-a601-6f3eb18ab2b4">
--->
+<img width="1320" alt="Screenshot" src="https://github.com/nicogarbaccio/blog/assets/36672915/833081c5-3f80-47fa-9cab-0f39e6355c46">
 
 # Buggin' Out
 Buggin' Out is my personal blog about QA engineering, that I built from scratch using the MERN stack. The frontend is powered by Vite and is written in JavaScript. The backend is powered by Express and Node.js, while MongoDB is used for the database. The blog features a robust suite of Cypress end-to-end tests, covering everything from authentication to creating, editing, and deleting a post.
